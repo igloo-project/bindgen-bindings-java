@@ -10,10 +10,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<owsi-core.version>0.12-SNAPSHOT</owsi-core.version>
-		<bindgen.version>2.29-ow-SNAPSHOT</bindgen.version>
+		<bindgen.version>3.0.0-SNAPSHOT</bindgen.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<commons-collections.version>3.2.2</commons-collections.version>
 		<guava.version>19.0</guava.version>
 		
 		<maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
