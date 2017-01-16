@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TimeZone;
 
 import org.bindgen.Bindable;
 
@@ -89,6 +91,12 @@ public class JavaBindings {
 	private Throwable throwable;
 
 	private StackTraceElement stackTraceElement;
+
+	private Calendar calendar;
+
+	private TimeZone timeZone;
+
+	private Date _date;
 
 	public List<Object> getList() {
 		return list;
@@ -360,5 +368,29 @@ public class JavaBindings {
 
 	public void setStackTraceElement(StackTraceElement stackTraceElement) {
 		this.stackTraceElement = stackTraceElement;
+	}
+
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
+
+	public TimeZone getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(TimeZone timeZone) {
+		this.timeZone = timeZone;
+	}
+
+	public Date get_date() {
+		return _date;
+	}
+
+	public void set_date(Date _date) {
+		this._date = _date;
 	}
 }
