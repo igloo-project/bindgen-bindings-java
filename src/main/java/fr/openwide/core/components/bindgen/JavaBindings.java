@@ -5,6 +5,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
@@ -22,7 +24,7 @@ import java.util.TimeZone;
 import org.bindgen.Bindable;
 
 @Bindable
-public class JavaBindings {
+public class JavaBindings implements Iterable<Object> {
 
 	private List<Object> list;
 
@@ -85,6 +87,12 @@ public class JavaBindings {
 	private ClassLoader classLoader;
 
 	private Integer integer;
+
+	private BigInteger bigInteger;
+
+	private BigDecimal bigDecimal;
+
+	private Enum<?> _enum;
 
 	private Exception exception;
 
@@ -346,6 +354,30 @@ public class JavaBindings {
 		this.integer = integer;
 	}
 
+	public BigInteger getBigInteger() {
+		return bigInteger;
+	}
+
+	public void setBigInteger(BigInteger bigInteger) {
+		this.bigInteger = bigInteger;
+	}
+
+	public BigDecimal getBigDecimal() {
+		return bigDecimal;
+	}
+
+	public void setBigDecimal(BigDecimal bigDecimal) {
+		this.bigDecimal = bigDecimal;
+	}
+
+	public Enum<?> get_enum() {
+		return _enum;
+	}
+
+	public void set_enum(Enum<?> _enum) {
+		this._enum = _enum;
+	}
+
 	public Exception getException() {
 		return exception;
 	}
@@ -392,5 +424,11 @@ public class JavaBindings {
 
 	public void set_date(Date _date) {
 		this._date = _date;
+	}
+
+	@Override
+	public Iterator<Object> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
