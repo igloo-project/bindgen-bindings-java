@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.openwide.core.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.2</version>
 	
 	<name>owsi-core java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
