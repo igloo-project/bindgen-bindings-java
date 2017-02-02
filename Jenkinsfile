@@ -16,9 +16,10 @@ simpleProject {
 	config.triggerSetPollSpecCronExpression = 'H H/3 * * *'
 	config.notificationRecipients = 'grp-jenkins@lists.projects.openwide.fr'
 	config.buildBlockerSimpleLock = 'bindgen.*'
-	config.jdk = env.JOB_NAME.contains('jdk7') ? 'JDK 1.7' : 'JDK 1.8'
+	// build use toolchains to handle jdk 7 builds
+	config.jdk = 'JDK 1.8'
 	config.buildTarget = 'install'
-	config.defaultMavenArgs = '-Dmaven.repo.local="${WORKSPACE}/m2-repository/"'
+	config.defaultMavenArgs = '-Ddistribution=owsi-core-release -Dmaven.repo.local="${WORKSPACE}/m2-repository/"'
 	config.beforeNotification = {
 		util_sh 'rm -rf "${WORKSPACE}/m2-repository/"'
 	}
