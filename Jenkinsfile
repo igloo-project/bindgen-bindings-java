@@ -7,7 +7,7 @@ simpleProject {
 	config.sonarEnabled = true
 	config.owaspDependencyCheckEnabled = true
 	// deploy automatically snapshots
-	config.deployEnabled = env.JOB_NAME.contains('-deploy') || (env.BRANCH_NAME && env.BRANCH_NAME != 'master')
+	config.deployEnabled = true
 	config.gitlabEnabled = false
 	config.githubEnabled = true
 	config.githubUrl = 'https://github.com/openwide-java/bindgen-java/'
