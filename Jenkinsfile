@@ -10,7 +10,7 @@ simpleProject {
 	config.deployEnabled = true
 	config.gitlabEnabled = false
 	config.githubEnabled = true
-	config.githubUrl = 'https://github.com/openwide-java/bindgen-java/'
+	config.githubUrl = 'https://github.com/igloo-project/bindgen-java/'
 
 	// jenkins choose to poll once by 3 hours
 	config.triggerSetPollSpecCronExpression = 'H H/3 * * *'

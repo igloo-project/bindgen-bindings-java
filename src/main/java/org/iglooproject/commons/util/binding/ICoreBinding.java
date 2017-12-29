@@ -1,4 +1,4 @@
-package fr.openwide.core.commons.util.binding;
+package org.iglooproject.commons.util.binding;
 
 import org.bindgen.BindingRoot;
 
