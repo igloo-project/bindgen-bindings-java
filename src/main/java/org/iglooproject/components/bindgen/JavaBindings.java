@@ -1,4 +1,4 @@
-package fr.openwide.core.components.bindgen;
+package org.iglooproject.components.bindgen;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
