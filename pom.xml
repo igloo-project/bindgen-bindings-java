@@ -31,10 +31,10 @@
 	<!-- Toolchain configuration so that bindgen can be generated either for jdk7 or jdk8 -->
 	<profiles>
 		<profile>
-			<id>igloo</id>
+			<id>kobalt</id>
 			<activation>
 				<property>
-					<name>igloo</name>
+					<name>kobalt</name>
 				</property>
 			</activation>
 			<build>
