@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.iglooproject.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.3</version>
 	
 	<name>igloo java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
