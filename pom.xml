@@ -2,15 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.iglooproject.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.3.1-SNAPSHOT</version>
+	<version>0.4.0-SNAPSHOT</version>
 	
 	<name>igloo java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		<bindgen.version>3.2</bindgen.version>
+		<bindgen.version>4.0.0-SNAPSHOT</bindgen.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<guava.version>19.0</guava.version>
 		
@@ -28,7 +27,8 @@
 		<minimal.maven.version>3.3</minimal.maven.version>
 	</properties>
 
-	<!-- Toolchain configuration so that bindgen can be generated either for jdk7 or jdk8 -->
+	<!-- Toolchain configuration so that bindgen can be generated either for jdk8 or jdk9 -->
+	<!-- TODO jdk9 is untested for now -->
 	<profiles>
 		<profile>
 			<id>kobalt</id>
@@ -46,35 +46,6 @@
 							<compilerArguments>
 								<AbindingPathSuperClass>org.iglooproject.commons.util.binding.AbstractCoreBinding</AbindingPathSuperClass>
 							</compilerArguments>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>jdk7</id>
-			<activation>
-				<property>
-					<name>jdk7</name>
-				</property>
-			</activation>
-			<properties>
-				<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
-				<jdk.signature.artifactId>java17</jdk.signature.artifactId>
-				<jdk.signature.version>1.0</jdk.signature.version>
-				<jdk.version>1.7</jdk.version>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-toolchains-plugin</artifactId>
-						<configuration>
-							<toolchains>
-								<jdk>
-									<version>1.7</version>
-								</jdk>
-							</toolchains>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -102,6 +73,35 @@
 							<toolchains>
 								<jdk>
 									<version>1.8</version>
+								</jdk>
+							</toolchains>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>jdk9</id>
+			<activation>
+				<property>
+					<name>jdk9</name>
+				</property>
+			</activation>
+			<properties>
+				<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
+				<jdk.signature.artifactId>java19</jdk.signature.artifactId>
+				<jdk.signature.version>1.0</jdk.signature.version>
+				<jdk.version>1.9</jdk.version>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-toolchains-plugin</artifactId>
+						<configuration>
+							<toolchains>
+								<jdk>
+									<version>1.9</version>
 								</jdk>
 							</toolchains>
 						</configuration>
