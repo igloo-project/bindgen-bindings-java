@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.iglooproject.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.4.0-SNAPSHOT</version>
+	<version>0.4.0.lambda-SNAPSHOT</version>
 	
 	<name>igloo java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<bindgen.version>4.0.0-SNAPSHOT</bindgen.version>
+		<bindgen.version>4.0.0.lambda-SNAPSHOT</bindgen.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<guava.version>19.0</guava.version>
 		
