@@ -15,6 +15,9 @@ public interface ICoreBinding<R, T> extends BindingRoot<R, T>, Function<R, T> {
 
 	/**
 	 * Shorthand for {@code Predicates.compose(predicate, (Function<R, T>) this)}
+	 * 
+	 * @param predicate to compose with self
+	 * @return composition of passed predicate with *this* {@link Function}
 	 */
 	Predicate<R> compose(Predicate<? super T> predicate);
 
