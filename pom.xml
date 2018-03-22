@@ -1,19 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.iglooproject.components</groupId>
-	<artifactId>bindgen-java</artifactId>
+	<artifactId>bindgen-bindings-java</artifactId>
 	<version>1.0.0</version>
 	
-	<name>igloo java.* bindings</name>
-	<description>Pre-generated bindings for java classes</description>
+	<name>JavaBindings @Bindable class</name>
+	<description>@Bindable class that triggers java type binding generation</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<bindgen.version>4.0.0</bindgen.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<guava.version>19.0</guava.version>
 		
-		<maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 		<maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
@@ -29,69 +27,6 @@
 		<minimal.jdk.version>1.8</minimal.jdk.version>
 		<minimal.maven.version>3.3</minimal.maven.version>
 	</properties>
-
-	<!-- Toolchain configuration so that bindgen can be generated either for jdk8 or jdk9 -->
-	<!-- TODO jdk9 is untested for now -->
-	<profiles>
-		<profile>
-			<id>jdk8</id>
-			<activation>
-				<property>
-					<name>jdk8</name>
-				</property>
-			</activation>
-			<properties>
-				<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
-				<jdk.signature.artifactId>java18</jdk.signature.artifactId>
-				<jdk.signature.version>1.0</jdk.signature.version>
-				<jdk.version>1.8</jdk.version>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-toolchains-plugin</artifactId>
-						<configuration>
-							<toolchains>
-								<jdk>
-									<version>1.8</version>
-								</jdk>
-							</toolchains>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>jdk9</id>
-			<activation>
-				<property>
-					<name>jdk9</name>
-				</property>
-			</activation>
-			<properties>
-				<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
-				<jdk.signature.artifactId>java19</jdk.signature.artifactId>
-				<jdk.signature.version>1.0</jdk.signature.version>
-				<jdk.version>1.9</jdk.version>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-toolchains-plugin</artifactId>
-						<configuration>
-							<toolchains>
-								<jdk>
-									<version>1.9</version>
-								</jdk>
-							</toolchains>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<dependencies>
 		<!-- bindgen generator and bases classes -->
@@ -110,11 +45,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -147,50 +77,11 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
-					<!-- two phases : processor and compiler -->
-					<executions>
-						<execution>
-							<id>default-compile</id>
-						</execution>
-						<execution>
-							<id>default-processor</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-							<configuration>
-								<proc>only</proc>
-							</configuration>
-						</execution>
-					</executions>
 					<configuration>
+						<proc>none</proc>
 						<source>${jdk.version}</source>
 						<target>${jdk.version}</target>
-						<fork>true</fork>
-						<annotationProcessorPaths>
-							<path>
-								<groupId>org.bindgen</groupId>
-								<artifactId>bindgen</artifactId>
-								<version>${bindgen.version}</version>
-							</path>
-						</annotationProcessorPaths>
-						<annotationProcessors>
-							<annotationProcessor>org.bindgen.processor.Processor</annotationProcessor>
-						</annotationProcessors>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-toolchains-plugin</artifactId>
-					<version>${maven-toolchains-plugin.version}</version>
-					<!-- trigger toolchain system -->
-					<executions>
-						<execution>
-							<goals>
-								<goal>toolchain</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 				<!-- Enforce code compatibility with the target JRE, even when building with a newer JDK. This ensures
 					that none of the newer classes or methods that were not yet defined in the target JRE are referenced 
@@ -314,9 +205,9 @@
 	</build>
 
 	<scm>
-		<url>git@github.com:igloo-project/bindgen-java.git</url>
-		<connection>scm:git:git@github.com:igloo-project/bindgen-java.git</connection>
-		<developerConnection>scm:git:git@github.com:igloo-project/bindgen-java.git</developerConnection>
+		<url>git@github.com:igloo-project/bindgen-bindings-java.git</url>
+		<connection>scm:git:git@github.com:igloo-project/bindgen-bindings-java.git</connection>
+		<developerConnection>scm:git:git@github.com:igloo-project/bindgen-bindings-java.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
