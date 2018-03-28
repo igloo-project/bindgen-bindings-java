@@ -7,6 +7,15 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
@@ -47,8 +56,6 @@ public class JavaBindings implements Iterable<Object> {
 	private Locale locale;
 
 	private Map.Entry<Object, Object> entry;
-
-	private Date date;
 
 	private Byte _byte;
 
@@ -100,11 +107,29 @@ public class JavaBindings implements Iterable<Object> {
 
 	private StackTraceElement stackTraceElement;
 
+	private Date date;
+
 	private Calendar calendar;
 
 	private TimeZone timeZone;
 
-	private Date _date;
+	private LocalDateTime localDateTime;
+
+	private LocalDate localDate;
+
+	private LocalTime localTime;
+
+	private OffsetDateTime offsetDateTime;
+
+	private OffsetTime offsetTime;
+
+	private ZonedDateTime zonedDateTime;
+
+	private Instant instant;
+
+	private ZoneId zoneId;
+
+	private Period period;
 
 	public List<Object> getList() {
 		return list;
@@ -192,14 +217,6 @@ public class JavaBindings implements Iterable<Object> {
 
 	public void setEntry(Map.Entry<Object, Object> entry) {
 		this.entry = entry;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public Byte get_byte() {
@@ -402,6 +419,14 @@ public class JavaBindings implements Iterable<Object> {
 		this.stackTraceElement = stackTraceElement;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public Calendar getCalendar() {
 		return calendar;
 	}
@@ -418,12 +443,76 @@ public class JavaBindings implements Iterable<Object> {
 		this.timeZone = timeZone;
 	}
 
-	public Date get_date() {
-		return _date;
+	public LocalDateTime getLocalDateTime() {
+		return localDateTime;
 	}
 
-	public void set_date(Date _date) {
-		this._date = _date;
+	public void setLocalDateTime(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
+	}
+
+	public LocalDate getLocalDate() {
+		return localDate;
+	}
+
+	public void setLocalDate(LocalDate localDate) {
+		this.localDate = localDate;
+	}
+
+	public LocalTime getLocalTime() {
+		return localTime;
+	}
+
+	public void setLocalTime(LocalTime localTime) {
+		this.localTime = localTime;
+	}
+
+	public OffsetDateTime getOffsetDateTime() {
+		return offsetDateTime;
+	}
+
+	public void setOffsetDateTime(OffsetDateTime offsetDateTime) {
+		this.offsetDateTime = offsetDateTime;
+	}
+
+	public OffsetTime getOffsetTime() {
+		return offsetTime;
+	}
+
+	public void setOffsetTime(OffsetTime offsetTime) {
+		this.offsetTime = offsetTime;
+	}
+
+	public ZonedDateTime getZonedDateTime() {
+		return zonedDateTime;
+	}
+
+	public void setZonedDateTime(ZonedDateTime zonedDateTime) {
+		this.zonedDateTime = zonedDateTime;
+	}
+
+	public Instant getInstant() {
+		return instant;
+	}
+
+	public void setInstant(Instant instant) {
+		this.instant = instant;
+	}
+
+	public ZoneId getZoneId() {
+		return zoneId;
+	}
+
+	public void setZoneId(ZoneId zoneId) {
+		this.zoneId = zoneId;
+	}
+
+	public Period getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(Period period) {
+		this.period = period;
 	}
 
 	@Override
