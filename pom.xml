@@ -213,10 +213,6 @@
 
 	<repositories>
 		<repository>
-			<id>bindgen</id>
-			<url>http://repo.joist.ws/</url>
-		</repository>
-		<repository>
 			<id>nexus-igloo-releases</id>
 			<name>Nexus Kobalt Releases</name>
 			<url>https://nexus.tools.kobalt.fr/repository/igloo-releases/</url>
