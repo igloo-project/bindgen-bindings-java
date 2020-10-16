@@ -9,31 +9,31 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<bindgen.version>4.0.0</bindgen.version>
-		<slf4j.version>1.6.1</slf4j.version>
+		<bindgen.version>4.1-SNAPSHOT</bindgen.version>
+		<slf4j.version>1.7.30</slf4j.version>
 		
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-		<maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
-		<maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
 		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
-		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+		<maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
 		<maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
-		<maven-versions-plugin.version>2.7</maven-versions-plugin.version>
-		<animal-sniffer-maven-plugin.version>1.18</animal-sniffer-maven-plugin.version>
-		<maven.deploy.version>3.0.0-M1</maven.deploy.version>
-		<maven.source.version>3.1.0</maven.source.version>
-		<maven.javadoc.version>3.1.1</maven.javadoc.version>
+		<maven-versions-plugin.version>2.8.1</maven-versions-plugin.version>
+		<animal-sniffer-maven-plugin.version>1.19</animal-sniffer-maven-plugin.version>
+		<maven-deploy.version>3.0.0-M1</maven-deploy.version>
+		<maven-source.version>3.2.1</maven-source.version>
+		<maven-javadoc.version>3.2.0</maven-javadoc.version>
 		<!-- jgitflow dependency -->
 		<jsch.version>0.1.55</jsch.version>
 		
-		<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
-		<jdk.signature.artifactId>java18</jdk.signature.artifactId>
-		<jdk.signature.version>1.0</jdk.signature.version>
-		<jdk.version>1.8</jdk.version>
-		<minimal.jdk.version>1.8</minimal.jdk.version>
+<!-- 		<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId> -->
+<!-- 		<jdk.signature.artifactId>java18</jdk.signature.artifactId> -->
+<!-- 		<jdk.signature.version>1.0</jdk.signature.version> -->
+		<jdk.version>11</jdk.version>
+		<minimal.jdk.version>11</minimal.jdk.version>
 		<minimal.maven.version>3.3</minimal.maven.version>
 	</properties>
 
@@ -124,36 +124,36 @@
 					be aware that code generation tools may be affected by the JDK used to compile, and thus may trigger 
 					a failure (because they automatically referenced newer classes or methods). In this case, the only
 					way to make things work is to use the proper JDK. -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>animal-sniffer-maven-plugin</artifactId>
-					<version>${animal-sniffer-maven-plugin.version}</version>
-					<!-- check generated bindings jre api calls -->
-					<executions>
-						<execution>
-							<id>check-java-version</id>
-							<phase>compile</phase>
-							<goals>
-								<goal>check</goal>
-							</goals>
-							<configuration>
-								<signature>
-									<groupId>${jdk.signature.groupId}</groupId>
-									<artifactId>${jdk.signature.artifactId}</artifactId>
-									<version>${jdk.signature.version}</version>
-								</signature>
-							</configuration>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>${jdk.signature.groupId}</groupId>
-							<artifactId>${jdk.signature.artifactId}</artifactId>
-							<version>${jdk.signature.version}</version>
-							<type>signature</type>
-						</dependency>
-					</dependencies>
-				</plugin>
+<!-- 				<plugin> -->
+<!-- 					<groupId>org.codehaus.mojo</groupId> -->
+<!-- 					<artifactId>animal-sniffer-maven-plugin</artifactId> -->
+<!-- 					<version>${animal-sniffer-maven-plugin.version}</version> -->
+<!-- 					check generated bindings jre api calls -->
+<!-- 					<executions> -->
+<!-- 						<execution> -->
+<!-- 							<id>check-java-version</id> -->
+<!-- 							<phase>compile</phase> -->
+<!-- 							<goals> -->
+<!-- 								<goal>check</goal> -->
+<!-- 							</goals> -->
+<!-- 							<configuration> -->
+<!-- 								<signature> -->
+<!-- 									<groupId>${jdk.signature.groupId}</groupId> -->
+<!-- 									<artifactId>${jdk.signature.artifactId}</artifactId> -->
+<!-- 									<version>${jdk.signature.version}</version> -->
+<!-- 								</signature> -->
+<!-- 							</configuration> -->
+<!-- 						</execution> -->
+<!-- 					</executions> -->
+<!-- 					<dependencies> -->
+<!-- 						<dependency> -->
+<!-- 							<groupId>${jdk.signature.groupId}</groupId> -->
+<!-- 							<artifactId>${jdk.signature.artifactId}</artifactId> -->
+<!-- 							<version>${jdk.signature.version}</version> -->
+<!-- 							<type>signature</type> -->
+<!-- 						</dependency> -->
+<!-- 					</dependencies> -->
+<!-- 				</plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -204,17 +204,17 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${maven.deploy.version}</version>
+					<version>${maven-deploy.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven.source.version}</version>
+					<version>${maven-source.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven.javadoc.version}</version>
+					<version>${maven-javadoc.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
