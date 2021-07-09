@@ -9,7 +9,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<bindgen.version>4.1-SNAPSHOT</bindgen.version>
+		<bindgen.version>5.0-SNAPSHOT</bindgen.version>
 		<slf4j.version>1.7.30</slf4j.version>
 		
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -29,9 +29,6 @@
 		<!-- jgitflow dependency -->
 		<jsch.version>0.1.55</jsch.version>
 		
-<!-- 		<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId> -->
-<!-- 		<jdk.signature.artifactId>java18</jdk.signature.artifactId> -->
-<!-- 		<jdk.signature.version>1.0</jdk.signature.version> -->
 		<jdk.version>11</jdk.version>
 		<minimal.jdk.version>11</minimal.jdk.version>
 		<minimal.maven.version>3.3</minimal.maven.version>
@@ -62,10 +59,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>animal-sniffer-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -116,44 +109,9 @@
 						<proc>none</proc>
 						<source>${jdk.version}</source>
 						<target>${jdk.version}</target>
+						<release>${jdk.version}</release>
 					</configuration>
 				</plugin>
-				<!-- Enforce code compatibility with the target JRE, even when building with a newer JDK. This ensures
-					that none of the newer classes or methods that were not yet defined in the target JRE are referenced 
-					in this project. See https://maven.apache.org/guides/mini/guide-building-jdk14-on-jdk15.html Please
-					be aware that code generation tools may be affected by the JDK used to compile, and thus may trigger 
-					a failure (because they automatically referenced newer classes or methods). In this case, the only
-					way to make things work is to use the proper JDK. -->
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.codehaus.mojo</groupId> -->
-<!-- 					<artifactId>animal-sniffer-maven-plugin</artifactId> -->
-<!-- 					<version>${animal-sniffer-maven-plugin.version}</version> -->
-<!-- 					check generated bindings jre api calls -->
-<!-- 					<executions> -->
-<!-- 						<execution> -->
-<!-- 							<id>check-java-version</id> -->
-<!-- 							<phase>compile</phase> -->
-<!-- 							<goals> -->
-<!-- 								<goal>check</goal> -->
-<!-- 							</goals> -->
-<!-- 							<configuration> -->
-<!-- 								<signature> -->
-<!-- 									<groupId>${jdk.signature.groupId}</groupId> -->
-<!-- 									<artifactId>${jdk.signature.artifactId}</artifactId> -->
-<!-- 									<version>${jdk.signature.version}</version> -->
-<!-- 								</signature> -->
-<!-- 							</configuration> -->
-<!-- 						</execution> -->
-<!-- 					</executions> -->
-<!-- 					<dependencies> -->
-<!-- 						<dependency> -->
-<!-- 							<groupId>${jdk.signature.groupId}</groupId> -->
-<!-- 							<artifactId>${jdk.signature.artifactId}</artifactId> -->
-<!-- 							<version>${jdk.signature.version}</version> -->
-<!-- 							<type>signature</type> -->
-<!-- 						</dependency> -->
-<!-- 					</dependencies> -->
-<!-- 				</plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
