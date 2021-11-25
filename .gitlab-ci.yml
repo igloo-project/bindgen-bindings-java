@@ -1,3 +1,6 @@
+image:
+  name: maven:3.8-openjdk-11
+
 stages:
   - build
   - test
@@ -8,12 +11,22 @@ maven-build:
   environment: staging
   script:
     - "mvn -DskipTests clean compile"
+  tags:
+    - docker
 
 maven-test:
   stage: test
   environment: staging
   script:
     - "mvn test"
+  artifacts:
+    when: always
+    expire_in: 30 days
+    reports:
+      junit:
+        - "**/surefire-reports/*.xml"
+  tags:
+    - docker
 
 maven-deploy:
   stage: deploy
@@ -26,3 +39,5 @@ maven-deploy:
     - /^ft-.*-deploy$/
     - /^rl-.*$/
     - /^hf-.*$/
+  tags:
+    - docker
