@@ -1,6 +1,7 @@
 # 3.0 (2026-09)
 
 * Java 25 migration
+* update dependencies
 
 # 3.0 (2023-08)
 
